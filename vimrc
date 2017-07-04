@@ -125,3 +125,6 @@ let g:jsx_ext_required = 0
 
 " go
 let g:go_fmt_command = "goimports"
+
+" airline (tabline)
+let g:airline_section_b='%{fugitive#statusline()}'
