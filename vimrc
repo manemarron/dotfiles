@@ -21,6 +21,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 
 " editorconfig
 Plugin 'editorconfig/editorconfig-vim'
@@ -82,6 +83,7 @@ imap <C-n> <CR><Esc>O<Tab>
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_go_checkers = ['golint', 'go vet']
 
 " General conceal settings. Will keep things concealed
 " even when your cursor is on top of them.
@@ -120,3 +122,6 @@ let g:jsx_ext_required = 0
 
 :set list
 :set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+" go
+let g:go_fmt_command = "goimports"
