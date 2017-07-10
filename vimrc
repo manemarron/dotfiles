@@ -1,10 +1,18 @@
+language en_US
+if has('nvim')
+    let s:editor_root=expand("~/.config/nvim")
+else
+    let s:editor_root=expand("~/.vim")
+    set ttymouse=xterm2
+endif
+
 """" Vundle config"""""
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -39,6 +47,7 @@ Plugin 'hdima/python-syntax'
 
 " golang plugins
 Plugin 'fatih/vim-go'
+Plugin 'jodosha/vim-godebug'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
