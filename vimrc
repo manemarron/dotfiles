@@ -19,35 +19,37 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " general plugins
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'mhartington/oceanic-next'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
+Plugin 'Raimondi/delimitMate' " general syntax autocompletion
+Plugin 'scrooloose/nerdtree' "File tree
+Plugin 'Xuyuanp/nerdtree-git-plugin' "Marks files as changed in NERDTree
+Plugin 'airblade/vim-gitgutter' "Marks lines as changed inside buffers
+Plugin 'tpope/vim-fugitive' "Git wrapper inside of vim
+Plugin 'scrooloose/syntastic' "General linting
+Plugin 'mtscout6/syntastic-local-eslint.vim' "Syntastic support for ESLint
+Plugin 'mhartington/oceanic-next' "Color theme
+Plugin 'ctrlpvim/ctrlp.vim' "Fuzzy file and buffer finder
+Plugin 'vim-airline/vim-airline' "Status line configuration
+Plugin 'vim-airline/vim-airline-themes' "Airline plugin to support themes in status line
+Plugin 'Shougo/deoplete.nvim' "Autocompletion tool
+Plugin 'nathanaelkane/vim-indent-guides' "Indent guides, shows spaces or tabs
 
 " editorconfig
-Plugin 'editorconfig/editorconfig-vim'
+Plugin 'editorconfig/editorconfig-vim' "Formats buffers depending on .editorconfig
 
 " js plugins
-Plugin 'pangloss/vim-javascript'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'moll/vim-node'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'mxw/vim-jsx'
-Plugin 'flowtype/vim-flow'
+Plugin 'pangloss/vim-javascript' "js syntax highlighting
+Plugin 'moll/vim-node' "node.js navigation tool
+Plugin 'maksimr/vim-jsbeautify' "js formatting tool, uses .editorconfig
+Plugin 'mxw/vim-jsx' "jsx syntax highlighting and indenting
+Plugin 'flowtype/vim-flow' "Checks flow errors on save
 
 " python plugins
-Plugin 'hdima/python-syntax'
+Plugin 'hdima/python-syntax' "python syntax highlighting
 
 " golang plugins
-Plugin 'fatih/vim-go'
-Plugin 'jodosha/vim-godebug'
+Plugin 'fatih/vim-go' "Go tool wrapper
+Plugin 'jodosha/vim-godebug' "Go debugger
+Plugin 'zchee/deoplete-go' "Go autocompletion using gocode
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -132,8 +134,13 @@ let g:jsx_ext_required = 0
 :set list
 :set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
-" go
+" go-vim
 let g:go_fmt_command = "goimports"
 
 " airline (tabline)
 let g:airline_section_b='%{fugitive#statusline()}'
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+" deoplete-go
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
