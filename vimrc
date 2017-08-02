@@ -31,6 +31,7 @@ Plugin 'ctrlpvim/ctrlp.vim' "Fuzzy file and buffer finder
 Plugin 'vim-airline/vim-airline' "Status line configuration
 Plugin 'vim-airline/vim-airline-themes' "Airline plugin to support themes in status line
 Plugin 'Shougo/deoplete.nvim' "Autocompletion tool
+Plugin 'Shougo/echodoc.vim' "Autocompletion preview is shown in command line
 Plugin 'nathanaelkane/vim-indent-guides' "Indent guides, shows spaces or tabs
 
 " editorconfig
@@ -74,6 +75,8 @@ set foldmethod=syntax
 set autoindent
 set cindent
 set nocompatible
+set cmdheight=2
+set completeopt-=preview
 
 " for css or scss
 " Remap arrow keys to NOP
@@ -144,3 +147,5 @@ let g:airline_section_b='%{fugitive#statusline()}'
 let g:deoplete#enable_at_startup = 1
 " deoplete-go
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+" echodoc
+let g:echodoc#enable_at_startup = 1
