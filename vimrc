@@ -137,6 +137,9 @@ let g:jsx_ext_required = 0
 :set list
 :set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
+" js-flow
+let g:javascript_plugin_flow = 1
+
 " go-vim
 let g:go_fmt_command = "goimports"
 
