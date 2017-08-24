@@ -1,4 +1,4 @@
-language en_US
+" language en_US
 if has('nvim')
     let s:editor_root=expand("~/.config/nvim")
 else
@@ -14,6 +14,7 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
 call vundle#begin()
+call vundle#rc(s:editor_root . '/bundle')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -77,6 +78,9 @@ set cindent
 set nocompatible
 set cmdheight=2
 set completeopt-=preview
+
+set swapfile
+set dir=~/.local/share/nvim/swap
 
 " for css or scss
 " Remap arrow keys to NOP
