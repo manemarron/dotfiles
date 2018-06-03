@@ -21,8 +21,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " general plugins
 Plugin 'Raimondi/delimitMate' " general syntax autocompletion
-Plugin 'scrooloose/nerdtree' "File tree
-Plugin 'Xuyuanp/nerdtree-git-plugin' "Marks files as changed in NERDTree
 Plugin 'airblade/vim-gitgutter' "Marks lines as changed inside buffers
 Plugin 'tpope/vim-fugitive' "Git wrapper inside of vim
 Plugin 'scrooloose/syntastic' "General linting
@@ -119,14 +117,10 @@ let g:flow#enable = 1
 let g:flow#flowpath = "flow"
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/node_modules/*,*/.git/*,*.swp
-
-" NERDtree
-let NERDTreeShowHidden=1
 
 " JSBeautify
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
