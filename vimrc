@@ -51,10 +51,17 @@ Plugin 'fatih/vim-go' "Go tool wrapper
 Plugin 'jodosha/vim-godebug' "Go debugger
 Plugin 'zchee/deoplete-go' "Go autocompletion using gocode
 
+" omnisharp
+Plugin 'OmniSharp/omnisharp-vim' "OmniSharp vim
+
+" terraform
+Plugin 'hashivim/vim-terraform.git' "Terraform highlighting
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 """" end: Vundleconfig""""
 
+filetype plugin on
 set fixendofline
 
 " Theme
@@ -75,7 +82,8 @@ set autoindent
 set cindent
 set nocompatible
 set cmdheight=2
-set completeopt-=preview
+set completeopt=longest,menuone,preview
+set previewheight=5
 
 set swapfile
 set dir=~/.local/share/nvim/swap
@@ -100,6 +108,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_go_checkers = ['golint', 'go vet']
+let g:syntastic_cs_checkers = ['code_checker']
 
 " General conceal settings. Will keep things concealed
 " even when your cursor is on top of them.
@@ -150,3 +159,11 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 " echodoc
 let g:echodoc#enable_at_startup = 1
+
+" omnisharp
+let g:OmniSharp_start_server = 0
+let g:OmniSharp_stop_server = 0
+let g:OmniSharp_selector_ui = 'ctrlp'  " Use ctrlp.vim
+
+" terraform
+let g:terraform_fold_sections=1
