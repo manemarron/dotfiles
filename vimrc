@@ -51,9 +51,6 @@ Plugin 'fatih/vim-go' "Go tool wrapper
 Plugin 'jodosha/vim-godebug' "Go debugger
 Plugin 'zchee/deoplete-go' "Go autocompletion using gocode
 
-" omnisharp
-Plugin 'OmniSharp/omnisharp-vim' "OmniSharp vim
-
 " terraform
 Plugin 'hashivim/vim-terraform.git' "Terraform highlighting
 
@@ -159,11 +156,6 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 " echodoc
 let g:echodoc#enable_at_startup = 1
-
-" omnisharp
-let g:OmniSharp_start_server = 0
-let g:OmniSharp_stop_server = 0
-let g:OmniSharp_selector_ui = 'ctrlp'  " Use ctrlp.vim
 
 " terraform
 let g:terraform_fold_sections=1
