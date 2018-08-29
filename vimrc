@@ -126,7 +126,7 @@ autocmd StdinReadPre * let s:std_in=1
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-set wildignore+=*/node_modules/*,*/.git/*,*.swp
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor|bin/Debug|bin/Release|obj)|(\.(swp|ico|git|svn))$'
 
 " JSBeautify
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
