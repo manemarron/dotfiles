@@ -25,7 +25,7 @@ Plugin 'airblade/vim-gitgutter' "Marks lines as changed inside buffers
 Plugin 'tpope/vim-fugitive' "Git wrapper inside of vim
 Plugin 'scrooloose/syntastic' "General linting
 Plugin 'mtscout6/syntastic-local-eslint.vim' "Syntastic support for ESLint
-Plugin 'mhartington/oceanic-next' "Color theme
+Plugin 'lifepillar/vim-solarized8' "Color theme
 Plugin 'ctrlpvim/ctrlp.vim' "Fuzzy file and buffer finder
 Plugin 'vim-airline/vim-airline' "Status line configuration
 Plugin 'vim-airline/vim-airline-themes' "Airline plugin to support themes in status line
@@ -53,6 +53,15 @@ Plugin 'zchee/deoplete-go' "Go autocompletion using gocode
 
 " terraform
 Plugin 'hashivim/vim-terraform.git' "Terraform highlighting
+"
+" handlebars
+Plugin 'mustache/vim-mustache-handlebars'
+
+" yaml
+Plugin 'pedrohdz/vim-yaml-folds'
+
+" cloudformation
+Plugin 'speshak/vim-cfn'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,7 +75,8 @@ syntax enable
 if (has("termguicolors"))
  set termguicolors
 endif
-colorscheme OceanicNext
+set background=dark
+colorscheme solarized8
 
 set number
 set hlsearch
