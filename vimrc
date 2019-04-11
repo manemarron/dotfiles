@@ -126,10 +126,6 @@ let g:javascript_conceal_this = "@"
 let g:javascript_conceal_return = "<"
 let g:javascript_conceal_prototype = "#"
 
-" flow
-let g:flow#enable = 1
-let g:flow#flowpath = "flow"
-
 autocmd StdinReadPre * let s:std_in=1
 
 " ctrlp
@@ -149,9 +145,6 @@ let g:jsx_ext_required = 0
 
 :set list
 :set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-
-" js-flow
-let g:javascript_plugin_flow = 1
 
 " go-vim
 let g:go_fmt_command = "goimports"
