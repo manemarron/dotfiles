@@ -108,6 +108,7 @@ imap <C-n> <CR><Esc>O<Tab>
 
 " Syntastic config
 let g:syntastic_check_on_open=1
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_go_checkers = ['golangci_lint']
@@ -130,7 +131,7 @@ autocmd StdinReadPre * let s:std_in=1
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-set wildignore+=node_modules/**,vendor/**,obj/**,bin/Debug/**,bin/Release/**,dist/**,target/**,.git/**
+set wildignore+=node_modules/**,vendor/**,obj/**,bin/Debug/**,bin/Release/**,dist/**,target/**,.git/**,**/node_modules/**,**/vendor/**,**/obj/**,**/bin/Debug/**,**/bin/Release/**,**/dist/**,**/target/**,**/.git/**
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor|bin/Debug|bin/Release|obj)|(\.(swp|ico|git|svn))$'
 
 " JSBeautify
