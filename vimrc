@@ -23,7 +23,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Raimondi/delimitMate' " general syntax autocompletion
 Plugin 'airblade/vim-gitgutter' "Marks lines as changed inside buffers
 Plugin 'tpope/vim-fugitive' "Git wrapper inside of vim
-Plugin 'scrooloose/syntastic' "General linting
+Plugin 'vim-syntastic/syntastic' "General linting
 Plugin 'mtscout6/syntastic-local-eslint.vim' "Syntastic support for ESLint
 Plugin 'lifepillar/vim-solarized8' "Color theme
 Plugin 'ctrlpvim/ctrlp.vim' "Fuzzy file and buffer finder
@@ -41,7 +41,6 @@ Plugin 'pangloss/vim-javascript' "js syntax highlighting
 Plugin 'moll/vim-node' "node.js navigation tool
 Plugin 'maksimr/vim-jsbeautify' "js formatting tool, uses .editorconfig
 Plugin 'mxw/vim-jsx' "jsx syntax highlighting and indenting
-Plugin 'flowtype/vim-flow' "Checks flow errors on save
 
 " python plugins
 Plugin 'hdima/python-syntax' "python syntax highlighting
@@ -50,9 +49,6 @@ Plugin 'hdima/python-syntax' "python syntax highlighting
 Plugin 'fatih/vim-go' "Go tool wrapper
 Plugin 'jodosha/vim-godebug' "Go debugger
 Plugin 'zchee/deoplete-go' "Go autocompletion using gocode
-
-" terraform
-Plugin 'hashivim/vim-terraform.git' "Terraform highlighting
 "
 " handlebars
 Plugin 'mustache/vim-mustache-handlebars'
@@ -114,7 +110,7 @@ imap <C-n> <CR><Esc>O<Tab>
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_go_checkers = ['golint', 'go vet']
+let g:syntastic_go_checkers = ['golangci_lint']
 let g:syntastic_cs_checkers = ['code_checker']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_cloudformation_checkers = ['cfn_lint']
@@ -138,6 +134,7 @@ autocmd StdinReadPre * let s:std_in=1
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set wildignore+=node_modules/**,vendor/**,obj/**,bin/Debug/**,bin/Release/**,dist/**,target/**,.git/**
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor|bin/Debug|bin/Release|obj)|(\.(swp|ico|git|svn))$'
 
 " JSBeautify
@@ -168,6 +165,3 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 " echodoc
 let g:echodoc#enable_at_startup = 1
-
-" terraform
-let g:terraform_fold_sections=1
