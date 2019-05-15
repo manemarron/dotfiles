@@ -62,6 +62,9 @@ Plugin 'pedrohdz/vim-yaml-folds'
 " cloudformation
 Plugin 'speshak/vim-cfn'
 
+" omnisharp
+Bundle 'OmniSharp/omnisharp-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 """" end: Vundleconfig""""
@@ -162,3 +165,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 " echodoc
 let g:echodoc#enable_at_startup = 1
+
+" OmniSharp
+let g:OmniSharp_timeout = 10
+let g:OmniSharp_selector_ui = 'ctrlp'
+let g:OmniSharp_highlight_types = 1
