@@ -33,6 +33,9 @@ Plugin 'Shougo/deoplete.nvim' "Autocompletion tool
 Plugin 'Shougo/echodoc.vim' "Autocompletion preview is shown in command line
 Plugin 'nathanaelkane/vim-indent-guides' "Indent guides, shows spaces or tabs
 
+" markdown
+Plugin 'iamcco/markdown-preview.nvim'
+
 " editorconfig
 Plugin 'editorconfig/editorconfig-vim' "Formats buffers depending on .editorconfig
 
@@ -111,7 +114,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_go_checkers = ['golangci_lint']
+let g:syntastic_go_checkers = ['golint', 'go vet']
 let g:syntastic_cs_checkers = ['code_checker']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_cloudformation_checkers = ['cfn_lint']
