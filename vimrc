@@ -66,7 +66,7 @@ Plugin 'pedrohdz/vim-yaml-folds'
 Plugin 'speshak/vim-cfn'
 
 " omnisharp
-Bundle 'OmniSharp/omnisharp-vim'
+Plugin 'OmniSharp/omnisharp-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -170,6 +170,35 @@ let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:echodoc#enable_at_startup = 1
 
 " OmniSharp
-let g:OmniSharp_timeout = 10
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_timeout = 5
 let g:OmniSharp_selector_ui = 'ctrlp'
-let g:OmniSharp_highlight_types = 1
+let g:OmniSharp_highlight_types = 2
+" Map \+<space> to OmniSharpGetCodeActions in normal mode
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Map F2 to OmniSharpRename with dialog in normal mode
+nnoremap <F2> :OmniSharpRename<CR>
+" Map \+cf to OmniSharpCodeFormat in normal mode
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+augroup omnisharp_commands
+    autocmd!
+    " Show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+    " Navigate up and down by method/property/field
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+    " Find all code errors/warnings for the current solution and populate the quickfix window
+    autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
+augroup END
