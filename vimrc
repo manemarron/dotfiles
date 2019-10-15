@@ -202,3 +202,6 @@ augroup omnisharp_commands
     " Find all code errors/warnings for the current solution and populate the quickfix window
     autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
 augroup END
+
+" Map // in visual mode to search for visual selection in current buffer
+vnoremap // y/<C-R>"<CR>
