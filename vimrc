@@ -46,7 +46,9 @@ Plugin 'maksimr/vim-jsbeautify' "js formatting tool, uses .editorconfig
 Plugin 'mxw/vim-jsx' "jsx syntax highlighting and indenting
 
 " python plugins
-Plugin 'hdima/python-syntax' "python syntax highlighting
+Plugin 'vim-python/python-syntax' "python syntax highlighting
+Plugin 'tmhedberg/SimpylFold' "python folding for python-syntax
+Plugin 'deoplete-plugins/deoplete-jedi' "python autocompletion
 
 " golang plugins
 Plugin 'fatih/vim-go' "Go tool wrapper
