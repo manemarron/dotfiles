@@ -44,6 +44,7 @@ Plugin 'pangloss/vim-javascript' "js syntax highlighting
 Plugin 'moll/vim-node' "node.js navigation tool
 Plugin 'maksimr/vim-jsbeautify' "js formatting tool, uses .editorconfig
 Plugin 'mxw/vim-jsx' "jsx syntax highlighting and indenting
+Plugin 'carlitux/deoplete-ternjs' "js autocompletion using tern.js
 
 " python plugins
 Plugin 'vim-python/python-syntax' "python syntax highlighting
@@ -53,7 +54,7 @@ Plugin 'deoplete-plugins/deoplete-jedi' "python autocompletion
 " golang plugins
 Plugin 'fatih/vim-go' "Go tool wrapper
 Plugin 'jodosha/vim-godebug' "Go debugger
-Plugin 'zchee/deoplete-go' "Go autocompletion using gocode
+Plugin 'deoplete-plugins/deoplete-go' "Go autocompletion using gocode
 "
 " handlebars
 Plugin 'mustache/vim-mustache-handlebars'
