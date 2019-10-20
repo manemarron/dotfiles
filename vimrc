@@ -6,71 +6,61 @@ else
     set ttymouse=xterm2
 endif
 
-"""" Vundle config"""""
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
-call vundle#begin()
-call vundle#rc(s:editor_root . '/bundle')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"""" plug config"""""
+call plug#begin(s:editor_root . '/plugged')
 
 " general plugins
-Plugin 'Raimondi/delimitMate' " general syntax autocompletion
-Plugin 'airblade/vim-gitgutter' "Marks lines as changed inside buffers
-Plugin 'tpope/vim-fugitive' "Git wrapper inside of vim
-Plugin 'vim-syntastic/syntastic' "General linting
-Plugin 'mtscout6/syntastic-local-eslint.vim' "Syntastic support for ESLint
-Plugin 'lifepillar/vim-solarized8' "Color theme
-Plugin 'ctrlpvim/ctrlp.vim' "Fuzzy file and buffer finder
-Plugin 'vim-airline/vim-airline' "Status line configuration
-Plugin 'vim-airline/vim-airline-themes' "Airline plugin to support themes in status line
-Plugin 'Shougo/deoplete.nvim' "Autocompletion tool
-Plugin 'Shougo/echodoc.vim' "Autocompletion preview is shown in command line
-Plugin 'nathanaelkane/vim-indent-guides' "Indent guides, shows spaces or tabs
+Plug 'Raimondi/delimitMate' " general syntax autocompletion
+Plug 'airblade/vim-gitgutter' "Marks lines as changed inside buffers
+Plug 'tpope/vim-fugitive' "Git wrapper inside of vim
+Plug 'vim-syntastic/syntastic' "General linting
+Plug 'mtscout6/syntastic-local-eslint.vim' "Syntastic support for ESLint
+Plug 'lifepillar/vim-solarized8' "Color theme
+Plug 'ctrlpvim/ctrlp.vim' "Fuzzy file and buffer finder
+Plug 'vim-airline/vim-airline' "Status line configuration
+Plug 'vim-airline/vim-airline-themes' "Airline plugin to support themes in status line
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "Autocompletion tool
+Plug 'Shougo/echodoc.vim' "Autocompletion preview is shown in command line
+Plug 'nathanaelkane/vim-indent-guides' "Indent guides, shows spaces or tabs
 
 " markdown
-Plugin 'iamcco/markdown-preview.nvim'
+Plug 'iamcco/markdown-preview.nvim'
 
 " editorconfig
-Plugin 'editorconfig/editorconfig-vim' "Formats buffers depending on .editorconfig
+Plug 'editorconfig/editorconfig-vim' "Formats buffers depending on .editorconfig
 
 " js plugins
-Plugin 'pangloss/vim-javascript' "js syntax highlighting
-Plugin 'moll/vim-node' "node.js navigation tool
-Plugin 'maksimr/vim-jsbeautify' "js formatting tool, uses .editorconfig
-Plugin 'mxw/vim-jsx' "jsx syntax highlighting and indenting
-Plugin 'carlitux/deoplete-ternjs' "js autocompletion using tern.js
+Plug 'pangloss/vim-javascript' "js syntax highlighting
+Plug 'moll/vim-node' "node.js navigation tool
+Plug 'maksimr/vim-jsbeautify' "js formatting tool, uses .editorconfig
+Plug 'mxw/vim-jsx' "jsx syntax highlighting and indenting
+Plug 'carlitux/deoplete-ternjs' "js autocompletion using tern.js
 
 " python plugins
-Plugin 'vim-python/python-syntax' "python syntax highlighting
-Plugin 'tmhedberg/SimpylFold' "python folding for python-syntax
-Plugin 'deoplete-plugins/deoplete-jedi' "python autocompletion
+Plug 'vim-python/python-syntax' "python syntax highlighting
+Plug 'tmhedberg/SimpylFold' "python folding for python-syntax
+Plug 'deoplete-plugins/deoplete-jedi' "python autocompletion
 
 " golang plugins
-Plugin 'fatih/vim-go' "Go tool wrapper
-Plugin 'jodosha/vim-godebug' "Go debugger
-Plugin 'deoplete-plugins/deoplete-go' "Go autocompletion using gocode
+Plug 'fatih/vim-go' "Go tool wrapper
+Plug 'jodosha/vim-godebug' "Go debugger
+Plug 'deoplete-plugins/deoplete-go' "Go autocompletion using gocode
 "
 " handlebars
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
 
 " yaml
-Plugin 'pedrohdz/vim-yaml-folds'
+Plug 'pedrohdz/vim-yaml-folds'
 
 " cloudformation
-Plugin 'speshak/vim-cfn'
+Plug 'speshak/vim-cfn'
 
 " omnisharp
-Plugin 'OmniSharp/omnisharp-vim'
+Plug 'OmniSharp/omnisharp-vim'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-"""" end: Vundleconfig""""
+call plug#end()
+"""" end: plug config""""
 
 filetype plugin on
 set fixendofline
@@ -139,7 +129,6 @@ let g:javascript_conceal_prototype = "#"
 autocmd StdinReadPre * let s:std_in=1
 
 " ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=node_modules/**,vendor/**,obj/**,bin/Debug/**,bin/Release/**,dist/**,target/**,.git/**,**/node_modules/**,**/vendor/**,**/obj/**,**/bin/Debug/**,**/bin/Release/**,**/dist/**,**/target/**,**/.git/**
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor|bin|obj)|(\.(swp|ico|git|svn))$'
 
