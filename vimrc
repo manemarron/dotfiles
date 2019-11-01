@@ -1,10 +1,13 @@
 " language en_US
+
+"""" Editor root config"""""
 if has('nvim')
     let s:editor_root=expand("~/.config/nvim")
 else
     let s:editor_root=expand("~/.vim")
     set ttymouse=xterm2
 endif
+"""" end: Editor root config"""""
 
 """" plug config"""""
 call plug#begin(s:editor_root . '/plugged')
@@ -42,7 +45,7 @@ Plug 'tmhedberg/SimpylFold' "python folding for python-syntax
 Plug 'deoplete-plugins/deoplete-jedi' "python autocompletion
 
 " golang plugins
-Plug 'fatih/vim-go' "Go tool wrapper
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } "Go tool wrapper
 Plug 'jodosha/vim-godebug' "Go debugger
 Plug 'deoplete-plugins/deoplete-go' "Go autocompletion using gocode
 "
@@ -55,23 +58,24 @@ Plug 'pedrohdz/vim-yaml-folds'
 " cloudformation
 Plug 'speshak/vim-cfn'
 
-" omnisharp
+" c#
+Plug 'OrangeT/vim-csharp'
 Plug 'OmniSharp/omnisharp-vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
 """" end: plug config""""
 
-filetype plugin on
-set fixendofline
+filetype indent plugin on
 
-" Theme
+"""" Theme"""""
 syntax enable
 if (has("termguicolors"))
  set termguicolors
 endif
 set background=dark
 colorscheme solarized8
+"""" end: Theme"""""
 
 set number
 set hlsearch
@@ -82,55 +86,62 @@ set ruler
 set foldmethod=syntax
 set autoindent
 set cindent
-set nocompatible
-set cmdheight=2
 set completeopt=longest,menuone,preview
 set previewheight=5
-
+set fixendofline
 set swapfile
 set dir=~/.local/share/nvim/swap
 
-" for css or scss
+"""" General mappings"""""
+autocmd StdinReadPre * let s:std_in=1
+" Map // in visual mode to search for visual selection in current buffer
+vnoremap // y/<C-R>"<CR>
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <c-space> :noh<bar>:echo<cr>
 " Remap arrow keys to NOP
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
-
 " Remap CTRL-N to line splitting
-imap <C-n> <CR><Esc>O<Tab>
+inoremap <C-n> <CR><Esc>O<Tab>
+"""" end: General mappings"""""
 
-" Syntastic config
+"""" deoplete""""
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"""" end: deoplete""""
+
+"""" syntastic""""
 let g:syntastic_check_on_open=1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_go_checkers = ['golint', 'go vet']
+let g:syntastic_go_checkers = ['golint', 'go vet', 'golangci-lint']
 let g:syntastic_cs_checkers = ['code_checker']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_cloudformation_checkers = ['cfn_lint']
+"""" end: syntastic""""
 
 " General conceal settings. Will keep things concealed
 " even when your cursor is on top of them.
 set conceallevel=1
 set concealcursor=nvic
- 
+
 " vim-javascript conceal settings.
 let g:javascript_conceal_function = "λ"
 let g:javascript_conceal_this = "@"
 let g:javascript_conceal_return = "<"
 let g:javascript_conceal_prototype = "#"
 
-autocmd StdinReadPre * let s:std_in=1
 
 " ctrlp
-set wildignore+=node_modules/**,vendor/**,obj/**,bin/Debug/**,bin/Release/**,dist/**,target/**,.git/**,**/node_modules/**,**/vendor/**,**/obj/**,**/bin/Debug/**,**/bin/Release/**,**/dist/**,**/target/**,**/.git/**
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor|bin|obj)|(\.(swp|ico|git|svn))$'
+set wildignore+=node_modules/**,vendor/**,obj/**,bin/Debug/**,bin/Release/**,dist/**,target/**,.git/**,**/node_modules/**,**/vendor/**,**/obj/**,**/bin/Debug/**,**/bin/Release/**,**/dist/**,**/target/**,**/.git/**,**/build/**
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor|bin|obj|build)|(\.(swp|ico|git|svn))$'
 
 " JSBeautify
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
@@ -151,14 +162,13 @@ let g:go_fmt_command = "goimports"
 " airline (tabline)
 let g:airline_section_b='%{fugitive#statusline()}'
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-" deoplete-go
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-" echodoc
-let g:echodoc#enable_at_startup = 1
 
-" OmniSharp
+"""" echodoc config"""""
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'virtual'
+"""" end: echodoc config"""""
+
+"""" OmniSharp config"""""
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_timeout = 5
 let g:OmniSharp_selector_ui = 'ctrlp'
@@ -191,6 +201,4 @@ augroup omnisharp_commands
     " Find all code errors/warnings for the current solution and populate the quickfix window
     autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
 augroup END
-
-" Map // in visual mode to search for visual selection in current buffer
-vnoremap // y/<C-R>"<CR>
+"""" end: OmniSharp config"""""
