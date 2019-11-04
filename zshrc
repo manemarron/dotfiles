@@ -111,7 +111,8 @@ export PATH=$PATH:$GOPATH/bin
 
 # Add dotnet environment variables
 export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+export PATH=$PATH:$DOTNET_ROOT
+export PATH=$PATH:$HOME/.dotnet/tools
 
 # Add java environment variables
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"

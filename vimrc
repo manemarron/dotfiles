@@ -68,9 +68,6 @@ call plug#end()
 
 filetype indent plugin on
 
-"Shell
-set shell=zsh\ -i
-
 """" Theme"""""
 syntax enable
 if (has("termguicolors"))
@@ -98,7 +95,7 @@ set dir=~/.local/share/nvim/swap
 """" General mappings"""""
 autocmd StdinReadPre * let s:std_in=1
 " Map // in visual mode to search for visual selection in current buffer
-vnoremap // y/<C-R>"<CR>
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Press Space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <c-space> :noh<bar>:echo<cr>
 " Remap arrow keys to NOP
