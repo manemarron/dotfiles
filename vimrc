@@ -18,7 +18,7 @@ Plug 'airblade/vim-gitgutter' "Marks lines as changed inside buffers
 Plug 'tpope/vim-fugitive' "Git wrapper inside of vim
 Plug 'vim-syntastic/syntastic' "General linting
 Plug 'mtscout6/syntastic-local-eslint.vim' "Syntastic support for ESLint
-Plug 'lifepillar/vim-solarized8' "Color theme
+Plug 'danilo-augusto/vim-afterglow' "Color scheme
 Plug 'ctrlpvim/ctrlp.vim' "Fuzzy file and buffer finder
 Plug 'vim-airline/vim-airline' "Status line configuration
 Plug 'vim-airline/vim-airline-themes' "Airline plugin to support themes in status line
@@ -68,13 +68,16 @@ call plug#end()
 
 filetype indent plugin on
 
+"Shell
+set shell=zsh\ -i
+
 """" Theme"""""
 syntax enable
 if (has("termguicolors"))
  set termguicolors
 endif
 set background=dark
-colorscheme solarized8
+colorscheme afterglow
 """" end: Theme"""""
 
 set number
