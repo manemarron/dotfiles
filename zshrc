@@ -1,5 +1,5 @@
 # Execute tmux if it is not already running
-[[ -z "$TMUX" ]] && exec tmux
+export ZSH_TMUX_AUTOSTART=true
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -64,6 +64,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  tmux
   zsh-completions # Clone git@github.com:zsh-users/zsh-completions into $ZSH_CUSTOM/custom/plugins
 )
 
@@ -112,11 +113,14 @@ export PATH=$PATH:$GOPATH/bin
 # Add dotnet environment variables
 export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$DOTNET_ROOT
-export PATH=$PATH:$HOME/.dotnet/tools
+export MSBuildSDKsPath=$DOTNET_ROOT/sdk/$(dotnet --version)/Sdks
+export PATH=$PATH:$MSBuildSDKsPath:$HOME/.dotnet/tools
 
 # Add java environment variables
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-export PATH=$PATH:$HOME/maven/bin
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export M2_HOME=$HOME/Applications/maven
+export MAVEN_HOME=$HOME/Applications/maven
+export PATH=$PATH:$MAVEN_HOME/bin
 
 # Used for git aliases: git files and git stat
 # Helpful for reviewing pull requests
