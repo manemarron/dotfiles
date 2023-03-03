@@ -1,3 +1,5 @@
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Execute tmux if it is not already running
 export ZSH_TMUX_AUTOSTART=false
 
@@ -63,10 +65,11 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  tmux
-  zsh-completions # Clone git@github.com:zsh-users/zsh-completions into $ZSH_CUSTOM/custom/plugins
-  aws
+    aliases
+    aws
+    git
+    tmux
+    zsh-completions # Clone git@github.com:zsh-users/zsh-completions into $ZSH_CUSTOM/custom/plugins
 )
 
 # Initialize zsh completions
@@ -102,6 +105,7 @@ export GPG_TTY
 
 # Add useful aliases
 source $HOME/.aliases
+source $HOME/.env
 
 # Add $HOME/.local/bin to PATH
 export PATH=$PATH:$HOME/.local/bin
@@ -118,7 +122,7 @@ export MSBuildSDKsPath=$DOTNET_ROOT/sdk/$(dotnet --version)/Sdks
 export PATH=$PATH:$MSBuildSDKsPath:$HOME/.dotnet/tools
 
 # Add java environment variables
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export JAVA_HOME=`/usr/libexec/java_home -v 17`
 export M2_HOME=$HOME/Applications/maven
 export MAVEN_HOME=$HOME/Applications/maven
 export PATH=$PATH:$MAVEN_HOME/bin
@@ -132,6 +136,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+source $HOME/VirtualEnvs/venv/bin/activate
+nvm use 16

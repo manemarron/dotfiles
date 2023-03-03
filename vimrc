@@ -202,3 +202,5 @@ augroup omnisharp_commands
     autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
 augroup END
 """" end: OmniSharp config"""""
+
+let g:python3_host_prog = '~/VirtualEnvs/venv/bin/python3'
