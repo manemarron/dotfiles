@@ -1,5 +1,5 @@
 # Execute tmux if it is not already running
-export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART=false
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -66,6 +66,7 @@ plugins=(
   git
   tmux
   zsh-completions # Clone git@github.com:zsh-users/zsh-completions into $ZSH_CUSTOM/custom/plugins
+  aws
 )
 
 # Initialize zsh completions
