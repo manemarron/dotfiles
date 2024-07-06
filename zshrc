@@ -122,7 +122,7 @@ export MSBuildSDKsPath=$DOTNET_ROOT/sdk/$(dotnet --version)/Sdks
 export PATH=$PATH:$MSBuildSDKsPath:$HOME/.dotnet/tools
 
 # Add java environment variables
-export JAVA_HOME=`/usr/libexec/java_home -v 17`
+export JAVA_HOME=/usr/lib/jvm/default-runtime
 export M2_HOME=$HOME/Applications/maven
 export MAVEN_HOME=$HOME/Applications/maven
 export PATH=$PATH:$MAVEN_HOME/bin
@@ -136,5 +136,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source $HOME/VirtualEnvs/venv/bin/activate
-nvm use 16
+export VIRTUAL_ENV=$HOME/VirtualEnvs/venv
+source $VIRTUAL_ENV/bin/activate
+
+nvm use default
