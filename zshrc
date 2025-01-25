@@ -82,10 +82,12 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
+export SSH_KEY_PATH="$HOME/.ssh/id_ed25519_jmmarrongbm"
+eval "$(ssh-agent -s)"
+ssh-add $SSH_KEY_PATH
 
 # Update manpath
 export MANPATH="/usr/local/man:$MANPATH"
@@ -110,11 +112,6 @@ source $HOME/.env
 # Add $HOME/.local/bin to PATH
 export PATH=$PATH:$HOME/.local/bin
 
-# Add go environment variables
-export GOPATH=$HOME/go
-export GOPRIVATE=github.com/gbmcode/*
-export PATH=$PATH:$GOPATH/bin
-
 # Add dotnet environment variables
 export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$DOTNET_ROOT
@@ -136,7 +133,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export VIRTUAL_ENV=$HOME/VirtualEnvs/venv
+export VIRTUAL_ENV=$HOME/virtualenvs/venv
 source $VIRTUAL_ENV/bin/activate
 
 nvm use default
+
+export PATH=/var/lib/snapd/snap/bin:$PATH

@@ -44,11 +44,6 @@ Plug 'vim-python/python-syntax' "python syntax highlighting
 Plug 'tmhedberg/SimpylFold' "python folding for python-syntax
 Plug 'deoplete-plugins/deoplete-jedi' "python autocompletion
 
-" golang plugins
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } "Go tool wrapper
-Plug 'jodosha/vim-godebug' "Go debugger
-Plug 'deoplete-plugins/deoplete-go' "Go autocompletion using gocode
-"
 " handlebars
 Plug 'mustache/vim-mustache-handlebars'
 
@@ -61,6 +56,7 @@ Plug 'speshak/vim-cfn'
 " c#
 Plug 'OrangeT/vim-csharp'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'puremourning/vimspector'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -170,6 +166,7 @@ let g:echodoc#type = 'virtual'
 
 """" OmniSharp config"""""
 let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_use_net6 = 1
 let g:OmniSharp_timeout = 5
 let g:OmniSharp_selector_ui = 'ctrlp'
 let g:OmniSharp_highlight_types = 2
@@ -182,7 +179,7 @@ nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
 augroup omnisharp_commands
     autocmd!
     " Show type information automatically when the cursor stops moving
-    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+    autocmd CursorHold *.cs OmniSharpTypeLookup
     " The following commands are contextual, based on the cursor position.
     autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
     autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
@@ -203,4 +200,4 @@ augroup omnisharp_commands
 augroup END
 """" end: OmniSharp config"""""
 
-let g:python3_host_prog = '~/VirtualEnvs/venv/bin/python3'
+let g:python3_host_prog = '~/virtualenvs/venv/bin/python3'
